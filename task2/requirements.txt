@@ -1,0 +1,11 @@
+# Core deep learning
+torch>=2.0.0
+torch-geometric>=2.3.0
+
+# Preprocessing and graph building
+scikit-learn>=1.2.0
+numpy>=1.24.0
+h5py>=3.8.0
+
+# Plotting
+matplotlib>=3.7.0

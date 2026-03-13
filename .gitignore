@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+.venv/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Large local datasets and caches
+task2/data/
+task6/data/MNIST/
+
+# Large model artifacts
+task2/models/*.pt
+task6/outputs/*.pt
+task6/outputs_strong/*.pt
+
+# Optional logs
+task2/logs/*.log
+task6/*.log
+
+# LaTeX temporary artifacts (keep PDFs and sources)
+report/*.aux
+report/*.out
+report/*.toc
+report/*.fls
+report/*.fdb_latexmk
+report/*.log
+task6/report/*.aux
+task6/report/*.out
+task6/report/*.toc
+task6/report/*.fls
+task6/report/*.fdb_latexmk
+task6/report/*.log
