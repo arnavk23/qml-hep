@@ -179,6 +179,142 @@ Stronger run checkpoint (\texttt{task6/outputs\_strong}, 4 epochs):
     \caption{Task 6 training curves (stronger run).}
 \end{figure}
 
+\section{Task 4 rationale: Quantum Generative Adversarial Network (QGAN) for HEP signal separation}
+Task 4 implements a QGAN using Cirq and TensorFlow Quantum to separate signal from background in HEP data. The model alternates quantum generator and discriminator training, evaluates accuracy and AUC, and supports fine-tuning. The rationale is to demonstrate quantum adversarial learning for small event datasets.
+
+\begin{table}[H]
+\centering
+\caption{Task 4 QGAN Results}
+\begin{tabular}{lc}
+\toprule
+Metric & Value \\
+\midrule
+Accuracy & (see logs) \\
+AUC & (see logs) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task4/qgan_results.png}
+    \caption{Task 4 QGAN performance (accuracy/AUC).}
+\end{figure}
+
+Artifacts: logs and figures in \texttt{task4/}.
+
+\section{Task 5 rationale: Quantum Graph Neural Network (QGNN) circuit design}
+Task 5 explores quantum graph neural network circuits, encoding node features as qubit rotations and edges as entangling gates. The circuit is visualized and saved as an SVG in \texttt{task5/}. The rationale is to show how quantum circuits can leverage graph structure for message passing and prediction.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task5/qgnn_circuit.svg}
+    \caption{Task 5 QGNN circuit diagram.}
+\end{figure}
+
+\section{Task 7 rationale: Equivariant quantum neural networks (Z$_2$ x Z$_2$ symmetry)}
+Task 7 implements a Z$_2$ x Z$_2$ equivariant QNN for a symmetric classification dataset, compares standard and equivariant QNN accuracy, and visualizes predictions. The rationale is to demonstrate symmetry-aware quantum architectures.
+
+\begin{table}[H]
+\centering
+\caption{Task 7 QNN Results}
+\begin{tabular}{lcc}
+\toprule
+Model & Accuracy \\
+\midrule
+Standard QNN & 0.525 \\
+Z$_2$ x Z$_2$ Equivariant QNN & 0.525 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task7/qnn_comparison.png}
+    \caption{Task 7 QNN accuracy comparison.}
+\end{figure}
+
+\section{Task 8 rationale: Vision Transformer and Quantum Vision Transformer (QViT) sketch}
+Task 8 implements a classical Vision Transformer for MNIST, evaluates test accuracy and confusion matrix, and sketches quantum extension ideas. The rationale is to benchmark transformer architectures and propose quantum analogs.
+
+\begin{table}[H]
+\centering
+\caption{Task 8 ViT Results}
+\begin{tabular}{lc}
+\toprule
+Metric & Value \\
+\midrule
+Test Accuracy & 0.1135 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task8/vit_mnist_confusion.png}
+    \caption{Task 8 ViT confusion matrix.}
+\end{figure}
+
+\section{Task 9 rationale: Kolmogorov-Arnold Network (KAN) and quantum KAN sketch}
+Task 9 implements a classical KAN using basis-splines for MNIST, evaluates accuracy and confusion matrix, and sketches quantum KAN architecture. The rationale is to explore nonlinear function approximation in classical and quantum settings.
+
+\begin{table}[H]
+\centering
+\caption{Task 9 KAN Results}
+\begin{tabular}{lc}
+\toprule
+Metric & Value \\
+\midrule
+Test Accuracy & 0.8629 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task9/kan_mnist_confusion.png}
+    \caption{Task 9 KAN confusion matrix.}
+\end{figure}
+
+\section{Task 10 rationale: Diffusion Models for Fast Detector Simulation and quantum diffusion sketch}
+Task 10 implements a diffusion model for event reconstruction, compares original and reconstructed events visually and quantitatively, and sketches quantum diffusion architecture ideas. The rationale is to benchmark generative models and propose quantum extensions.
+
+\begin{table}[H]
+\centering
+\caption{Task 10 Diffusion Model Results}
+\begin{tabular}{lc}
+\toprule
+Metric & Value \\
+\midrule
+MSE & 0.0985 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task10/diffusion_comparison.png}
+    \caption{Task 10 Diffusion model comparison.}
+\end{figure}
+
+\section{Task 11 rationale: Classical-quantum embedding with PQC}
+Task 11 implements an MLP to estimate PQC parameters from normally distributed data, prepares quantum states, and trains with MSE loss. The rationale is to demonstrate classical-to-quantum embedding pipelines.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task11/pqc_sample.svg}
+    \caption{Task 11 PQC circuit diagram.}
+\end{figure}
+
+\section{Task 12 rationale: Temporal difference learning with PQC embedding}
+Task 12 extends Task 11 by using DQN for temporal difference learning, trains with MSE reward, and saves circuit diagrams. The rationale is to show reinforcement learning with quantum state preparation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task12/pqc_td_sample.svg}
+    \caption{Task 12 PQC TD learning circuit diagram.}
+\end{figure}
+
 \paragraph{Interpretation for future work.}
 The persistent gap between same-class and different-class fidelity indicates that the representation is learning class-relevant geometry, but variance across runs suggests optimization sensitivity remains nontrivial. In practice, this motivates seed-sweep reporting and possibly a scheduler-based learning-rate policy in future revisions.
 
