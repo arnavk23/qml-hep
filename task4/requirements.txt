@@ -1,0 +1,5 @@
+cirq
+tensorflow
+tensorflow-quantum
+numpy
+scikit-learn
