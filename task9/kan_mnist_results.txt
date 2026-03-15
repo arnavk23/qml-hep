@@ -1,0 +1,1 @@
+KAN Test Accuracy: 0.8629

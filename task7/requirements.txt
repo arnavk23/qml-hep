@@ -1,0 +1,4 @@
+cirq
+numpy
+matplotlib
+scikit-learn

@@ -1,0 +1,4 @@
+torch
+cirq
+numpy
+matplotlib

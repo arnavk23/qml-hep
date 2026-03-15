@@ -15,6 +15,7 @@ Thumbs.db
 # Large local datasets and caches
 task2/data/
 task6/data/MNIST/
+task8/data/MNIST/
 
 # Large model artifacts
 task2/models/*.pt

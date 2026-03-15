@@ -1,0 +1,2 @@
+Standard QNN accuracy: 0.525
+Z2 x Z2 Equivariant QNN accuracy: 0.525
