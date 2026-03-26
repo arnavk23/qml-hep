@@ -8,10 +8,12 @@ from sklearn.metrics import mean_squared_error
 # Load dataset from task1 (assume circuit1.py or circuit2.py provides X)
 def load_data():
     # Placeholder: random data, replace with actual loading
+    # Added Red Wine Quality dataset from UCI as an example in notebook
     X = np.random.rand(100, 10)  # 100 events, 10 features
     return X
 
 # Simple diffusion model (DDPM-like, mock for demonstration)
+# In notebook, implemented a proper diffusion process with noise scheduling and reverse sampling.
 class DiffusionModel(nn.Module):
     def __init__(self, input_dim):
         super().__init__()

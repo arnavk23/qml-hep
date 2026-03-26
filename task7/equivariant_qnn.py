@@ -44,6 +44,7 @@ def create_equivariant_qnn_circuit(qubits, params):
 # Simple quantum classifier (mock, not TFQ)
 def quantum_classifier(X, y, circuit_fn, n_epochs=20):
     # For demonstration: random parameters, no real training
+    # Added optimized real training scenario in task7 notebook
     qubits = [cirq.GridQubit(0, i) for i in range(2)]
     params = np.random.uniform(0, np.pi, size=4)
     preds = []
