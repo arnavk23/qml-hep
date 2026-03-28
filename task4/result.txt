@@ -1,0 +1,22 @@
+Dataset loaded: 100 train, 100 test samples, 5 features
+
+Starting QGAN Training...
+
+Epoch   0 | D Loss: 0.6036 | G Loss: 0.7554
+Epoch  50 | D Loss: 0.0914 | G Loss: 3.9414
+Epoch 100 | D Loss: 0.0138 | G Loss: 6.4195
+Epoch 150 | D Loss: 0.0034 | G Loss: 8.4017
+Epoch 200 | D Loss: 0.0014 | G Loss: 8.6099
+Epoch 250 | D Loss: 0.0009 | G Loss: 10.6060
+Epoch 299 | D Loss: 0.0008 | G Loss: 10.9721
+
+======================================================================
+TASK IV: QUANTUM GENERATIVE ADVERSARIAL NETWORK (QGAN)
+======================================================================
+Test Accuracy : 0.6200
+Test AUC       : 0.7796
+======================================================================
+→ Saved: qgan_training_losses.png
+→ Saved: qgan_roc_curve.png
+
+Figures have been saved in your local task4 folder.
