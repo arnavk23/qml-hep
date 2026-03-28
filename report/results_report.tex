@@ -56,8 +56,31 @@ is deliberately minimal but expressive enough to exercise:
     \item non-local wire permutation,
     \item parameterized rotation behavior.
 \end{itemize}
+
 The second circuit uses SWAP test because it produces a scalar overlap proxy from one ancilla
 measurement stream, which is the same operational principle used in Task 6.
+
+\subsection{Outputs and Figures}
+\begin{itemize}
+    \item \texttt{circuit1.png}: Five-qubit circuit diagram
+    \item \texttt{circuit2.png}: SWAP test circuit diagram
+    \item \texttt{swap\_test\_result.png}: SWAP test ancilla measurement bar chart
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../task1/circuit1.png}
+    \caption{Task 1: Five-qubit circuit diagram.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../task1/circuit2.png}
+    \caption{Task 1: SWAP test circuit diagram.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../task1/swap_test_result.png}
+    \caption{Task 1: SWAP test ancilla measurement probabilities.}
+\end{figure}
 
 \subsection{Maintainability decisions}
 Both scripts produce both graphical and text-diagram outputs. The text form is retained because
@@ -92,7 +115,8 @@ This is more informative for maintainers than training two near-identical models
     \item Dataset loader was hardened to handle ParticleNet shard schema variations.
 \end{itemize}
 
-From \texttt{task2/logs/smoke\_run.log}, current smoke comparison metrics are:
+
+\subsection{Results}
 \begin{table}[H]
 \centering
 \caption{Task 2 test metrics (smoke compare run)}
@@ -100,16 +124,32 @@ From \texttt{task2/logs/smoke\_run.log}, current smoke comparison metrics are:
 \toprule
 Model & Accuracy & ROC AUC \\
 \midrule
-DGCNN & 0.5167 & 0.8038 \\
-GAT   & 0.5533 & 0.7883 \\
+DGCNN & 0.7530 & 0.8406 \\
+GAT   & 0.7320 & 0.8491 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+\subsection{Figures}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../task2/figures/roc_comparison.png}
-    \caption{Task 2 ROC comparison (DGCNN vs GAT).}
+    \includegraphics[width=0.7\textwidth]{../task2/figures/roc_dgcnn.png}
+    \caption{Task 2: ROC curve for DGCNN.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task2/figures/roc_gat.png}
+    \caption{Task 2: ROC curve for GAT.}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task2/figures/roc_comparison.png}
+    \caption{Task 2: ROC comparison (DGCNN vs GAT).}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task2/figures/training_history.png}
+    \caption{Task 2: Training and validation loss/AUC curves.}
 \end{figure}
 
 \paragraph{Reading these metrics correctly.}
@@ -152,6 +192,7 @@ Longer runs exposed numerical instability (invalid state norms / NaNs). The main
 These are not cosmetic: they are required for robust execution in constrained local environments.
 
 \subsection{Current measurable results}
+
 Validated run (\texttt{task6/outputs}, 3 epochs):
 \begin{itemize}[leftmargin=1.3em]
     \item Best epoch: 2 / 3,
@@ -167,21 +208,23 @@ Stronger run checkpoint (\texttt{task6/outputs\_strong}, 4 epochs):
     \item Best validation different-class fidelity: 0.2324.
 \end{itemize}
 
+\subsection{Figures}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.82\textwidth]{../task6/outputs/training_curves.png}
-    \caption{Task 6 training curves (validated extended run).}
+    \caption{Task 6: Training curves (validated extended run).}
 \end{figure}
-
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.82\textwidth]{../task6/outputs_strong/training_curves.png}
-    \caption{Task 6 training curves (stronger run).}
+    \caption{Task 6: Training curves (stronger run).}
 \end{figure}
 
 \section{Task 4 rationale: Quantum Generative Adversarial Network (QGAN) for HEP signal separation}
 Task 4 implements a QGAN using Cirq and TensorFlow Quantum to separate signal from background in HEP data. The model alternates quantum generator and discriminator training, evaluates accuracy and AUC, and supports fine-tuning. The rationale is to demonstrate quantum adversarial learning for small event datasets.
 
+
+\subsection{Results}
 \begin{table}[H]
 \centering
 \caption{Task 4 QGAN Results}
@@ -189,32 +232,45 @@ Task 4 implements a QGAN using Cirq and TensorFlow Quantum to separate signal fr
 \toprule
 Metric & Value \\
 \midrule
-Accuracy & (see logs) \\
-AUC & (see logs) \\
+Accuracy & (see qgan.py output) \\
+AUC & (see qgan.py output) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+\subsection{Figures}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{../task4/qgan_results.png}
-    \caption{Task 4 QGAN performance (accuracy/AUC).}
+    \includegraphics[width=0.7\textwidth]{../task4/qgan_training_losses.png}
+    \caption{Task 4: QGAN training loss curves.}
 \end{figure}
-
-Artifacts: logs and figures in \texttt{task4/}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task4/qgan_roc_curve.png}
+    \caption{Task 4: QGAN ROC curve.}
+\end{figure}
 
 \section{Task 5 rationale: Quantum Graph Neural Network (QGNN) circuit design}
 Task 5 explores quantum graph neural network circuits, encoding node features as qubit rotations and edges as entangling gates. The circuit is visualized and saved as an SVG in \texttt{task5/}. The rationale is to show how quantum circuits can leverage graph structure for message passing and prediction.
 
+
+\subsection{Figures}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{../task5/qgnn_circuit.png}
+    \caption{Task 5: QGNN circuit diagram (PNG).}
+\end{figure}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../task5/qgnn_circuit.svg}
-    \caption{Task 5 QGNN circuit diagram.}
+    \caption{Task 5: QGNN circuit diagram (SVG).}
 \end{figure}
 
 \section{Task 7 rationale: Equivariant quantum neural networks (Z$_2$ x Z$_2$ symmetry)}
 Task 7 implements a Z$_2$ x Z$_2$ equivariant QNN for a symmetric classification dataset, compares standard and equivariant QNN accuracy, and visualizes predictions. The rationale is to demonstrate symmetry-aware quantum architectures.
 
+
+\subsection{Results}
 \begin{table}[H]
 \centering
 \caption{Task 7 QNN Results}
@@ -228,15 +284,18 @@ Z$_2$ x Z$_2$ Equivariant QNN & 0.525 \\
 \end{tabular}
 \end{table}
 
+\subsection{Figures}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../task7/qnn_comparison.png}
-    \caption{Task 7 QNN accuracy comparison.}
+    \caption{Task 7: QNN accuracy comparison.}
 \end{figure}
 
 \section{Task 8 rationale: Vision Transformer and Quantum Vision Transformer (QViT) sketch}
 Task 8 implements a classical Vision Transformer for MNIST, evaluates test accuracy and confusion matrix, and sketches quantum extension ideas. The rationale is to benchmark transformer architectures and propose quantum analogs.
 
+
+\subsection{Results}
 \begin{table}[H]
 \centering
 \caption{Task 8 ViT Results}
@@ -249,15 +308,18 @@ Test Accuracy & 0.1135 \\
 \end{tabular}
 \end{table}
 
+\subsection{Figures}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../task8/vit_mnist_confusion.png}
-    \caption{Task 8 ViT confusion matrix.}
+    \caption{Task 8: ViT confusion matrix.}
 \end{figure}
 
 \section{Task 9 rationale: Kolmogorov-Arnold Network (KAN) and quantum KAN sketch}
 Task 9 implements a classical KAN using basis-splines for MNIST, evaluates accuracy and confusion matrix, and sketches quantum KAN architecture. The rationale is to explore nonlinear function approximation in classical and quantum settings.
 
+
+\subsection{Results}
 \begin{table}[H]
 \centering
 \caption{Task 9 KAN Results}
@@ -270,15 +332,18 @@ Test Accuracy & 0.8629 \\
 \end{tabular}
 \end{table}
 
+\subsection{Figures}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../task9/kan_mnist_confusion.png}
-    \caption{Task 9 KAN confusion matrix.}
+    \caption{Task 9: KAN confusion matrix.}
 \end{figure}
 
 \section{Task 10 rationale: Diffusion Models for Fast Detector Simulation and quantum diffusion sketch}
 Task 10 implements a diffusion model for event reconstruction, compares original and reconstructed events visually and quantitatively, and sketches quantum diffusion architecture ideas. The rationale is to benchmark generative models and propose quantum extensions.
 
+
+\subsection{Results}
 \begin{table}[H]
 \centering
 \caption{Task 10 Diffusion Model Results}
@@ -291,28 +356,33 @@ MSE & 0.0985 \\
 \end{tabular}
 \end{table}
 
+\subsection{Figures}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../task10/diffusion_comparison.png}
-    \caption{Task 10 Diffusion model comparison.}
+    \caption{Task 10: Diffusion model comparison.}
 \end{figure}
 
 \section{Task 11 rationale: Classical-quantum embedding with PQC}
 Task 11 implements an MLP to estimate PQC parameters from normally distributed data, prepares quantum states, and trains with MSE loss. The rationale is to demonstrate classical-to-quantum embedding pipelines.
 
+
+\subsection{Figures}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../task11/pqc_sample.svg}
-    \caption{Task 11 PQC circuit diagram.}
+    \caption{Task 11: PQC circuit diagram.}
 \end{figure}
 
 \section{Task 12 rationale: Temporal difference learning with PQC embedding}
 Task 12 extends Task 11 by using DQN for temporal difference learning, trains with MSE reward, and saves circuit diagrams. The rationale is to show reinforcement learning with quantum state preparation.
 
+
+\subsection{Figures}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{../task12/pqc_td_sample.svg}
-    \caption{Task 12 PQC TD learning circuit diagram.}
+    \caption{Task 12: PQC TD learning circuit diagram.}
 \end{figure}
 
 \paragraph{Interpretation for future work.}
